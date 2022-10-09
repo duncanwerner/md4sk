@@ -36,20 +36,20 @@ const config = {
   // add the .md extension for markdown files. they will be
   // named (in this example) +page.md or +page.svelte.md
 
-	extensions: ['.md', '.svelte'],
+  extensions: ['.md', '.svelte'],
 	
   // update the preprocessor
 
-	preprocess: [
-		preprocess(), 
-		Markdown(),
-	],
+  preprocess: [
+    preprocess(), 
+    Markdown(),
+  ],
 
   // no more changes
 
-	kit: {
-		adapter: adapter()
-	}
+  kit: {
+    adapter: adapter()
+  }
 
 };
 
@@ -84,23 +84,23 @@ import remarkFrontmatter from 'remark-frontmatter';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 
-	extensions: ['.md', '.svelte'],
-	
-	preprocess: [
-		preprocess(), 
-		Markdown({
+  extensions: ['.md', '.svelte'],
+
+  preprocess: [
+    preprocess(), 
+    Markdown({
       remarkPlugins: [
         remarkFrontmatter,
         ExtractYAMLFrontmatter,
-      ]
+      ],
     }),
-	],
+  ],
 
   // no more changes
 
-	kit: {
-		adapter: adapter()
-	}
+  kit: {
+    adapter: adapter()
+  }
 
 };
 
