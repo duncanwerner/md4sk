@@ -1,7 +1,7 @@
 
 import * as path from 'path';
 
-import { Processor, unified, type Plugin } from 'unified';
+import { Processor, unified } from 'unified';
 
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -12,17 +12,7 @@ import rehypeRaw from 'rehype-raw';
 import * as Mdast from 'mdast';
 import * as Hast from 'hast';
 
-import type { MarkdownOptions } from './options';
-
-/**
- * defaults for options
- */
-const DefaultMarkdownOptions: MarkdownOptions = {
-	extensions: ['md'],
-	escape_braces_in_code_blocks: true,
-	remarkPlugins: [],
-	rehypePlugins: [],
-};
+import { DefaultMarkdownOptions, type MarkdownOptions } from './options';
 
 /** dev */
 const DumpTree = () => {
@@ -109,13 +99,6 @@ export const Markdown = (options: Partial<MarkdownOptions> = {}) => {
 	});
 
 	let parser: Processor = unified().use(remarkParse);
-
-	/*
-	// optionally process frontmatter
-	if (composite_options.frontmatter) {
-		parser = parser.use([remarkFrontmatter, ExtractYAML]);
-	}
-	*/
 
 	// any remark plugins
 	for (const plugin of composite_options.remarkPlugins) {

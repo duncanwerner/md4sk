@@ -1,3 +1,8 @@
+
+import type { Plugin } from 'unified';
+
+export type PluginList = Array<Plugin|[Plugin, ...any]>;
+
 export interface MarkdownOptions {
 
 	/** 
@@ -7,35 +12,6 @@ export interface MarkdownOptions {
 	 */
 	extensions: string[];
 
-	/* * 
-	 * support frontamtter. defaults to false. if set to true, we read 
-	 * frontmatter as YAML (using remark-frontmatter), create a JSON 
-	 * representation, then add a script block that sets the const value 
-	 * `frontmatter` to that JSON. So effectively, frontmatter like this:
-	 * 
-	 * ---
-	 * title: Something
-	 * order: 10
-	 * ---
-	 * 
-	 * results in a script block in the output svelte that looks like this:
-	 * 
-	 * <script context="module">
-	 * const frontmatter = {
-	 * 	  title: 'Something',
-	 *    order: 10,
-	 * };
-	 * </script>
-	 * 
-	 * and then you can use that in your own script tag or in a page 
-	 * interpolation, like
-	 * 
-	 * # {frontmatter.title || 'No title'}
-	 * 
-	 * /
-	frontmatter: boolean;
-		*/
-
 	/** 
 	 * escape curly braces in code blocks. defaults to true. if we don't escape
 	 * curly braces, svelte interprets these are interpolations, which usually 
@@ -44,10 +20,25 @@ export interface MarkdownOptions {
 	 */
 	escape_braces_in_code_blocks: boolean;
 
-	/** remark plugins */
-	remarkPlugins: Array<Plugin|[Plugin, ...any]>;
+	/** 
+	 * remark plugins. this is an array of plugins, or [plugin, config] tuples
+	 */
+	remarkPlugins: PluginList;
 
-	/** rehype plugins */
-	rehypePlugins: Array<Plugin|[Plugin, ...any]>;
+	/** 
+	 * rehype plugins. this is an array of plugins, or [plugin, config] tuples
+	 */
+	rehypePlugins: PluginList;
 
 }
+
+/**
+ * defaults for options
+ */
+export const DefaultMarkdownOptions: MarkdownOptions = {
+	extensions: ['md'],
+	escape_braces_in_code_blocks: true,
+	remarkPlugins: [],
+	rehypePlugins: [],
+};
+

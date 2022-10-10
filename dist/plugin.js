@@ -4,15 +4,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeRaw from 'rehype-raw';
-/**
- * defaults for options
- */
-const DefaultMarkdownOptions = {
-    extensions: ['md'],
-    escape_braces_in_code_blocks: true,
-    remarkPlugins: [],
-    rehypePlugins: [],
-};
+import { DefaultMarkdownOptions } from './options';
 /** dev */
 const DumpTree = () => {
     return (tree) => {
@@ -83,12 +75,6 @@ export const Markdown = (options = {}) => {
         return '.' + extension;
     });
     let parser = unified().use(remarkParse);
-    /*
-    // optionally process frontmatter
-    if (composite_options.frontmatter) {
-        parser = parser.use([remarkFrontmatter, ExtractYAML]);
-    }
-    */
     // any remark plugins
     for (const plugin of composite_options.remarkPlugins) {
         if (Array.isArray(plugin)) {

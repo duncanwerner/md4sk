@@ -1,3 +1,5 @@
+import type { Plugin } from 'unified';
+export declare type PluginList = Array<Plugin | [Plugin, ...any]>;
 export interface MarkdownOptions {
     /**
      * list of file extensions. defaults to ['md']. note we are using
@@ -12,8 +14,16 @@ export interface MarkdownOptions {
      * you can still use interpolations elsewhere.
      */
     escape_braces_in_code_blocks: boolean;
-    /** remark plugins */
-    remarkPlugins: Array<Plugin | [Plugin, ...any]>;
-    /** rehype plugins */
-    rehypePlugins: Array<Plugin | [Plugin, ...any]>;
+    /**
+     * remark plugins. this is an array of plugins, or [plugin, config] tuples
+     */
+    remarkPlugins: PluginList;
+    /**
+     * rehype plugins. this is an array of plugins, or [plugin, config] tuples
+     */
+    rehypePlugins: PluginList;
 }
+/**
+ * defaults for options
+ */
+export declare const DefaultMarkdownOptions: MarkdownOptions;
