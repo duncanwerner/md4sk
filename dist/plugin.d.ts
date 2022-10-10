@@ -1,4 +1,4 @@
-import { type MarkdownOptions } from './options';
+import { type MarkdownOptions } from './options.js';
 /**
  * markdown processor for svelte-kit
  */

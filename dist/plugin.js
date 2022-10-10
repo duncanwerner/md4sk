@@ -4,7 +4,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeRaw from 'rehype-raw';
-import { DefaultMarkdownOptions } from './options';
+import { DefaultMarkdownOptions } from './options.js';
 /** dev */
 const DumpTree = () => {
     return (tree) => {

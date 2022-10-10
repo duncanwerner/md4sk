@@ -12,7 +12,7 @@ import rehypeRaw from 'rehype-raw';
 import * as Mdast from 'mdast';
 import * as Hast from 'hast';
 
-import { DefaultMarkdownOptions, type MarkdownOptions } from './options';
+import { DefaultMarkdownOptions, type MarkdownOptions } from './options.js';
 
 /** dev */
 const DumpTree = () => {
