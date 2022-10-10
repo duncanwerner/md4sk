@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
   "devDependencies": {
     "@types/node": "^18.8.3",
     "hast": "^1.0.0",
